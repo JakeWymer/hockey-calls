@@ -1,0 +1,38 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+th {
+	padding: 0 !important;
+}
+
+.container-fluid {
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	background-color: #016F4A;
+}
+
+.nav-item {
+	 color: white;
+}
+
+.nav-pills>li>a {
+	color: white;
+	font-size: 20px !important;
+}
+
+.nav-pills>li>a:hover {
+	background-color: #017F4A;
+}
+
+.submission_form {
+	margin-top: 3%;
+}
+
+.pick>td{
+	font-size: 18px;
+}

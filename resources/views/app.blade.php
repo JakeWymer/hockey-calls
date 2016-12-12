@@ -17,7 +17,7 @@
                     <li role="presentation"><a href="{{ url('/') }}">Home</a></li>
                     <li role="presentation"><a class="nav-item" href="{{ url('/competitors') }}">Competitors</a></li>
                     <li role="presentation"><a class="nav-item" href="{{ url('/players') }}">Players</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/scores') }}">Scores</a></li>
+                    <li role="presentation"><a class="nav-item" href="{{ url('/picks') }}">Make Picks</a></li>
                     <li role="presentation"><a class="nav-item" href="{{ url('/leaderboard') }}">Leaderboard</a></li>
 
                 </ul>

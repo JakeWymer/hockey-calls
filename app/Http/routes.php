@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PageController@home');
+Route::get('/', 'ScoresController@show');
 Route::get('leaderboard', 'PageController@leaders');
 
 Route::get('players', 'PlayersController@show');
@@ -22,7 +23,7 @@ Route::post('submissions', 'SubmissionsController@store');
 Route::get('competitors', 'CompetitorController@show');
 Route::post('competitors', 'CompetitorController@store');
 
-Route::get('scores', 'ScoresController@show');
+Route::get('picks', 'PageController@home');
 Route::post('scores', 'ScoresController@trackGoal');
 
 Route::post('game/{id}', 'GamesController@close');

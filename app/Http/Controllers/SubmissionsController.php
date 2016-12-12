@@ -47,6 +47,6 @@ class SubmissionsController extends Controller
 
         alert()->success('Picks Submitted!', 'Good luck...');
 
-    	return redirect('/scores');
+    	return redirect('/');
     }
 }

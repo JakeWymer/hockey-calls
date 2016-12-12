@@ -44,7 +44,7 @@
    </div>
   @if($submissions)
    <div class="col-md-3">
-      <form action='' method='POST'>
+      <form action='scores' method='POST'>
 
         {!! csrf_field() !!}
 

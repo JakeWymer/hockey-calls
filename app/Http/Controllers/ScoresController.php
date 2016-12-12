@@ -16,7 +16,7 @@ class ScoresController extends Controller
 {
     public function show() {
 
-        $today = Carbon::today()->format('Y/m/d');
+        $today = Carbon::today('America/Chicago')->format('Y/m/d');
 
         $game = DB::table('games')
             ->where('date', $today)
@@ -46,7 +46,7 @@ class ScoresController extends Controller
 
     public function trackGoal(Request $request) {
 
-        $today = Carbon::today()->format('Y/m/d');
+        $today = Carbon::today('America/Chicago')->format('Y/m/d');
 
         $game = DB::table('games')
             ->where('date', $today)

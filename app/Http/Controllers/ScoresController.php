@@ -123,6 +123,29 @@ class ScoresController extends Controller
         return redirect()->back();
     }
 
+    public function history() {
+        $submissions = DB::table('submissions')
+            ->join('competitors','submissions.competitor_id','=','competitors.id')
+            ->join('games','submissions.game_id','=','games.id')
+            ->select('games.date',
+                    'games.id',
+                    'competitors.name',
+                    'submissions.pick_one',
+                    'submissions.pick_two', 
+                    'submissions.pick_three', 
+                    'submissions.pick_wildcard',
+                    'submissions.points')
+            ->orderBy('games.date', 'desc')
+            ->get();
+
+        $games = DB::table('games')
+            ->groupBy('date')
+            ->orderBy('date', 'desc')
+            ->get();
+
+        return view('scores.history', compact('submissions', 'games'));
+    }
+
     public function submitScores()
     {
         dd('WORKS');

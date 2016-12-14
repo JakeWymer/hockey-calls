@@ -11,20 +11,25 @@
 |
 */
 
-Route::get('/', 'PageController@home');
-Route::get('/', 'ScoresController@show');
-Route::get('leaderboard', 'PageController@leaders');
+Route::auth();
 
-Route::get('players', 'PlayersController@show');
-Route::post('players', 'PlayersController@store');
+Route::get('/', 'HomeController@index');
 
-Route::post('submissions', 'SubmissionsController@store');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('competitors', 'CompetitorController@show');
-Route::post('competitors', 'CompetitorController@store');
+	Route::get('scores', 'ScoresController@show');
+	Route::get('leaderboard', 'PageController@leaders');
 
-Route::get('picks', 'PageController@home');
-Route::post('scores', 'ScoresController@trackGoal');
+	Route::get('players', 'PlayersController@show');
+	Route::post('players', 'PlayersController@store');
 
-Route::post('game/{id}', 'GamesController@close');
+	Route::post('submissions', 'SubmissionsController@store');
 
+	Route::get('competitors', 'CompetitorController@show');
+	Route::post('competitors', 'CompetitorController@store');
+
+	Route::get('picks', 'PageController@home');
+	Route::post('scores', 'ScoresController@trackGoal');
+
+	Route::post('game/{id}', 'GamesController@close');
+});

@@ -32,4 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('scores', 'ScoresController@trackGoal');
 
 	Route::post('game/{id}', 'GamesController@close');
+
+	Route::get('history', 'ScoresController@history');
 });

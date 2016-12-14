@@ -28,9 +28,13 @@ class AuthController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/scores';
-    protected $redirectPath = '/scores';
+    protected $redirectTo = '/scores';
 
+    protected function authenticated($request, $user)
+    {
+        return redirect('/scores');
+    }
+    
     /**
      * Create a new authentication controller instance.
      *

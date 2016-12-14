@@ -21,7 +21,7 @@ class SubmissionsController extends Controller
         $competitor->submissions += 1;
         $competitor->save();
 
-        $today = Carbon::today()->format('Y/m/d');
+        $today = Carbon::today('America/Chicago')->format('Y/m/d');
 
         $game_id = DB::table('games')
             ->where('date', $today)

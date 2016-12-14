@@ -41,7 +41,19 @@ class ScoresController extends Controller
 
         $players = Player::all();
 
-    	return view('scores.show', compact('submissions', 'players', 'game'));
+        $scorers = array();
+
+        $goal_scorers = DB::table('game_player')
+            ->where('game_id', $game->id)
+            ->get();
+
+        foreach ($goal_scorers as $goal_scorer) {
+            array_push($scorers, Player::find($goal_scorer->player_id));
+        }
+        
+        $scorers = collect($scorers);
+
+    	return view('scores.show', compact('submissions', 'players', 'game', 'scorers'));
     }
 
     public function trackGoal(Request $request) {

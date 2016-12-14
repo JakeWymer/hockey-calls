@@ -60,9 +60,7 @@
          </div>
            <button type="submit" class="btn btn-success">Goal!</button>
       </form>
-   </div>
 
-   <div class="row">
       <form action='game/{{$game->id}}' method='POST'>
 
         {!! csrf_field() !!}
@@ -72,5 +70,37 @@
    </div>
    @endif
 </div>
+
+<div class="row">
+    <div class="col-md-9">
+      <h2 class="text-center">Goal's Scored Today</h2>
+      <table class = "table table-striped">
+         <thead>
+            <tr>
+               <th>Number</th>
+               <th>Name</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+        @if($scorers)
+         @foreach($scorers as $scorer)
+
+            <tr class="pick">
+                <td>{{ $scorer->number }}</td>
+                <td>{{ $scorer->name }}</td>
+            </tr>
+
+         @endforeach
+        @else
+          <tr class="pick">
+              <td>No Goals Today!</td>
+          </tr>
+        @endif
+         </tbody>
+         
+      </table>
+   </div>
+   </div>
 
 @stop

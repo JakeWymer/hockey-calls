@@ -29,7 +29,7 @@ class ScoresController extends Controller
         }
 
     	$submissions = DB::table('submissions')
-    		->join('competitors','submissions.competitor_id','=','competitors.id')
+            ->join('competitors','submissions.competitor_id','=','competitors.id')
     	    ->select('competitors.name',
     	    		'submissions.pick_one',
     	    		'submissions.pick_two', 
@@ -38,6 +38,13 @@ class ScoresController extends Controller
     	    		'submissions.points')
     		->where('submissions.game_id', $game->id)
     		->get();
+
+        foreach ($submissions as $submission) {
+            $submission->pick_one = Player::find($submission->pick_one);
+            $submission->pick_two = Player::find($submission->pick_two);
+            $submission->pick_three = Player::find($submission->pick_three);
+            $submission->pick_wildcard = Player::find($submission->pick_wildcard);
+        }
 
         $players = Player::all();
 
@@ -70,8 +77,9 @@ class ScoresController extends Controller
         $ineligiblePlayers = $game->players;
 
         $player_obj = DB::table('players')
-            ->where('name', $request->scoring_player)
+            ->where('id', $request->scoring_player)
             ->first();
+
         $player_obj = Player::find($player_obj->id);
 
         if($ineligiblePlayers->contains($player_obj)) {
@@ -119,7 +127,9 @@ class ScoresController extends Controller
 
         $game->players()->attach($player_obj);
 
-        alert()->success('What a Goal!', $scoring_player . ' is the best!');
+        $scoring_player = Player::find($scoring_player);
+
+        alert()->success('What a Goal!', $scoring_player->name . ' is the best!');
         return redirect()->back();
     }
 
@@ -137,6 +147,13 @@ class ScoresController extends Controller
                     'submissions.points')
             ->orderBy('games.date', 'desc')
             ->get();
+
+        foreach ($submissions as $submission) {
+            $submission->pick_one = Player::find($submission->pick_one);
+            $submission->pick_two = Player::find($submission->pick_two);
+            $submission->pick_three = Player::find($submission->pick_three);
+            $submission->pick_wildcard = Player::find($submission->pick_wildcard);
+        }
 
         $games = DB::table('games')
             ->groupBy('date')

@@ -9,10 +9,10 @@
       {!! csrf_field() !!}
 
       <div class="form-group">
-        <label for="competitor">User:</label>
-        <select id="competitor" class="form-control" name="competitor[]">
+        <label for="competitor_id">User:</label>
+        <select id="competitor_id" class="form-control" name="competitor_id">
             @foreach($competitors as $competitor)
-                <option>
+                <option value="{{ $competitor->id }}">
                     {{ $competitor->name }}
                 </option>
             @endforeach
@@ -22,7 +22,7 @@
         <label for="pick-one">Pick One:</label>
         <select class="form-control" id="pick-one" name="pick_one">
             @foreach($players as $player)
-                <option>
+                <option value="{{ $player->id }}">
                   {{ $player->name }}
                 </option>
             @endforeach
@@ -32,7 +32,7 @@
         <label for="pick-two">Pick Two:</label>
         <select class="form-control" id="pick-two" name="pick_two">
             @foreach($players as $player)
-                <option>
+                <option value="{{ $player->id }}">
                    {{ $player->name }}
                 </option>
             @endforeach
@@ -42,7 +42,7 @@
         <label for="pick-three">Pick Three:</label>
         <select class="form-control" id="pick-three" name="pick_three">
             @foreach($players as $player)
-                <option>
+                <option value="{{ $player->id }}">
                     {{ $player->name }}
                 </option>
             @endforeach
@@ -52,7 +52,7 @@
         <label for="pick-wildcard">Wildcard Pick:</label>
         <select class="form-control" id="pick-wildcard" name="pick_wildcard">
             @foreach($players as $player)
-                <option>
+                <option value="{{ $player->id }}">
                     {{ $player->name }}
                 </option>
             @endforeach

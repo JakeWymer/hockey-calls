@@ -15,8 +15,7 @@ class SubmissionsController extends Controller
 {
     function store(Request $request) {
 
-    	$competitor_id = DB::table('competitors')->whereIn('name', $request->competitor)->pluck('id')[0];
-        $competitor = Competitor::find($competitor_id);
+        $competitor = Competitor::find($request->competitor_id);
 
         $competitor->submissions += 1;
         $competitor->save();
@@ -36,7 +35,7 @@ class SubmissionsController extends Controller
         }
 
     	Submission::create([
-    		'competitor_id' => $competitor_id,
+    		'competitor_id' => $competitor->id,
     		'pick_one' => $request->pick_one,
     		'pick_two' => $request->pick_two,
     		'pick_three' => $request->pick_three,
@@ -47,6 +46,6 @@ class SubmissionsController extends Controller
 
         alert()->success('Picks Submitted!', 'Good luck...');
 
-    	return redirect('/');
+    	return redirect('/scores');
     }
 }

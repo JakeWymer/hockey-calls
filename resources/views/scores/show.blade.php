@@ -25,10 +25,10 @@
 
             <tr class="pick">
                 <td>{{ $submission->name }}</td>
-                <td>{{ $submission->pick_one }}</td>
-                <td>{{ $submission->pick_two }}</td>
-                <td>{{ $submission->pick_three }}</td>
-                <td>{{ $submission->pick_wildcard }}</td>
+                <td><div><img src="{{ $submission->pick_one->image_path }}"></img><h5>{{ $submission->pick_one->name }}</h5></div></td>
+                <td><div><img src="{{ $submission->pick_two->image_path }}"></img><h5>{{ $submission->pick_two->name }}</h5></div></td>
+                <td><div><img src="{{ $submission->pick_three->image_path }}"></img><h5>{{ $submission->pick_three->name }}</h5></div></td>
+                <td><div><img src="{{ $submission->pick_wildcard->image_path }}"></img><h5>{{ $submission->pick_wildcard->name }}</h5></div></td>
                 <td>{{ $submission->points }}</td>
             </tr>
 
@@ -52,7 +52,7 @@
             <label for="scoring_player">Track Goal</label>
             <select class="form-control" id="scoring_player" name="scoring_player">
                 @foreach($players as $player)
-                    <option>
+                    <option value="{{ $player->id }}">
                         {{ $player->name }}
                     </option>
                 @endforeach

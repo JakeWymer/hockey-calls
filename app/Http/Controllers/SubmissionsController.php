@@ -10,13 +10,13 @@ use App\Competitor;
 use Alert;
 use Carbon\Carbon;
 use App\Game;
+use Auth;
 
 class SubmissionsController extends Controller
 {
     function store(Request $request) {
 
-        $competitor = Competitor::find($request->competitor_id);
-
+        $competitor = Competitor::find(Auth::user()->competitor_id);
         $competitor->submissions += 1;
         $competitor->save();
 

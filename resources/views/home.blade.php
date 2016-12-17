@@ -7,17 +7,6 @@
     <form method="POST" action='{{ url("/submissions") }}'>
 
       {!! csrf_field() !!}
-
-      <div class="form-group">
-        <label for="competitor_id">User:</label>
-          <select id="competitor_id" class="form-control" name="competitor_id">
-              @foreach($competitors as $competitor)
-                  <option value="{{ $competitor->id }}">
-                      {{ $competitor->name }}
-                  </option>
-              @endforeach
-          </select>
-      </div>
       <div class="form-group">
         <label for="pick-one">Pick One:</label>
         <div class="row">

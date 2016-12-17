@@ -10,9 +10,10 @@
 
         <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
         <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     </head>
     <body>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="container-fluid">
             <nav>
                 <ul class="nav nav-pills">
@@ -34,6 +35,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/sweetalert.js"></script>
         @include('Alerts::show')
+
+        <script src="{{{ asset('js/main.js') }}}"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

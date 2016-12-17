@@ -13,15 +13,16 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
-
 Route::group(['middleware' => 'auth'], function () {
-
+	Route::get('/', 'ScoresController@show');
 	Route::get('scores', 'ScoresController@show');
 	Route::get('leaderboard', 'PageController@leaders');
 
 	Route::get('players', 'PlayersController@show');
 	Route::post('players', 'PlayersController@store');
+	Route::post('players/get', 'PlayersController@getPlayers');
+	Route::post('players/updateChoice', 'PlayersController@updateChoice');
+
 
 	Route::post('submissions', 'SubmissionsController@store');
 

@@ -12,16 +12,22 @@ $('#pick_one_toggle, #pick_two_toggle, #pick_three_toggle, #pick_wildcard_toggle
 
 	var data = $(this).prop('checked');
 	var element_id = $(this).attr('id').slice(0, -7);
+    var wildcard = 0;
+
+    if(element_id == 'pick_wildcard') {
+        wildcard = 1;
+    }
 
 	$.ajax({
         type:"POST",
         url:'players/get',
         data: { 
         	_token:$(this).data('token'),
-        	data : data },
+        	data : data,
+            wildcard : wildcard },
         dataType: 'json',
         success: function(data){
-
+            console.log(data);
         	$('#' + element_id).empty();
 
             $.each(data.response, function(i, obj) {
@@ -50,7 +56,7 @@ $('#pick_one, #pick_two, #pick_three, #pick_wildcard').change(function() {
         	data : data },
         dataType: 'json',
         success: function(data){
-        	console.log(data.response);
+            console.log(data);
         	$('.chosen_' + element_id).empty();
 			var player_one = '<div><img class="img-responsive" src="' + data.response.image_path + '"></img><h5>' + data.response.name +'</h5></div>';
 

@@ -58,7 +58,7 @@
           <div class="col-xs-2"><input type="checkbox" data-token="{{ csrf_token() }}" data-toggle="toggle" data-on="Defense" data-off="Offense" id="pick_wildcard_toggle"></div>
             <div class="col-xs-6">
               <select class="form-control" id="pick_wildcard" name="pick_wildcard" data-token="{{ csrf_token() }}">
-                  @foreach($players as $player)
+                  @foreach($wildcard_players as $player)
                       <option value="{{ $player->id }}">
                           {{ $player->name }}
                       </option>

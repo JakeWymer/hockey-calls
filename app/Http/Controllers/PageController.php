@@ -13,9 +13,18 @@ class PageController extends Controller
     function home() {
 
     	$competitors = Competitor::all();
-    	$players = Player::all();
+    	$players = Player::all()->keyBy('id');
+        $wildcard_player_ids = [18, 22, 23, 24, 21, 14, 2, 3, 6, 8, 9, 10, 16, 17, 19, 20];
+        $wildcard_players = collect(array());
 
-    	return view('home', compact(['players', 'competitors']));
+        foreach ($wildcard_player_ids as $id) {
+            if($players->contains($id)) {
+                $players->forget($id);
+                $wildcard_players->push(Player::find($id));
+            }
+        }
+
+    	return view('home', compact(['players', 'competitors', 'wildcard_players']));
     }
 
     public function leaders() {

@@ -29,12 +29,30 @@ class PlayersController extends Controller
     public function getPlayers(Request $request) {
 
         $players;
+        $wildcard_player_ids = [18, 22, 23, 24, 21, 14, 2, 3, 6, 8, 9, 10, 16, 17, 19, 20];
+        $wildcard_players = collect(array());
+
+        if($request->data == 'true' && $request->wildcard == 1) {
+            $players = DB::table('players')
+                        ->where('position', '=', 'D')
+                        ->whereIn('id', $wildcard_player_ids)
+                        ->get();
+            return response()->json(['response' => $players], 200);
+            
+        }
+
+        if($request->data == 'false' && $request->wildcard == 1) {
+            $players = DB::table('players')
+                        ->where('position', '!=', 'D')
+                        ->whereIn('id', $wildcard_player_ids)
+                        ->get();
+            return response()->json(['response' => $players], 200);
+            
+        }
 
         if($request->data == 'true') {
             $players = DB::table('players')
-                        ->where('position', '!=', 'LW')
-                        ->where('position', '!=', 'RW')
-                        ->where('position', '!=', 'C')
+                        ->where('position', '=', 'D')
                         ->get();
         }
 
@@ -43,6 +61,7 @@ class PlayersController extends Controller
                         ->where('position', '!=', 'D')
                         ->get();
         }
+
         return response()->json(['response' => $players], 200);
     }
 

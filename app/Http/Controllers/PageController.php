@@ -38,6 +38,8 @@ class PageController extends Controller
     		}
     	}
 
+        $competitors = $competitors->sortByDesc('ppg');
+
     	return view('leaders', compact('competitors'));
     }
 }

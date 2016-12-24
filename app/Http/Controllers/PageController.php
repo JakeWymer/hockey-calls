@@ -32,7 +32,7 @@ class PageController extends Controller
 
     	foreach ($competitors as $competitor) {
     		if($competitor->submissions > 0) {
-    			$competitor->ppg = $competitor->total_points/$competitor->submissions;
+    			$competitor->ppg = round ($competitor->total_points/$competitor->submissions, 3);
     		} else {
     			$competitor->ppg = 0;
     		}

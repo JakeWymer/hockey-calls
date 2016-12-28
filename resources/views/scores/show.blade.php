@@ -6,7 +6,7 @@
     <h1 class="text-center">Today's Picks</h1>
 </div>
 
-<div class="row">
+<div class="row game" id="{{$game->id}}">
   <div class="col-xs-6">
     <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#track_goal_modal">Track Goal</button>
   </div>
@@ -40,10 +40,29 @@
 
             <tr class="pick">
                 <td>{{ $submission->name }}</td>
-                <td><div><img class="img-responsive" src="{{ $submission->pick_one->image_path }}"></img><h5>{{ $submission->pick_one->name }}</h5></div></td>
-                <td><div><img class="img-responsive" src="{{ $submission->pick_two->image_path }}"></img><h5>{{ $submission->pick_two->name }}</h5></div></td>
-                <td><div><img class="img-responsive" src="{{ $submission->pick_three->image_path }}"></img><h5>{{ $submission->pick_three->name }}</h5></div></td>
-                <td><div><img class="img-responsive" src="{{ $submission->pick_wildcard->image_path }}"></img><h5>{{ $submission->pick_wildcard->name }}</h5></div></td>
+                @if($scorers->contains($submission->pick_one))
+                  <td><div><img class="img-responsive submission_img scorer" id="{{ $submission->pick_one->id }}" src="{{ $submission->pick_one->image_path }}"></img><h5>{{ $submission->pick_one->name }}</h5></div></td>
+                @else
+                  <td><div><img class="img-responsive submission_img" id="{{ $submission->pick_one->id }}" src="{{ $submission->pick_one->image_path }}"></img><h5>{{ $submission->pick_one->name }}</h5></div></td>
+                @endif
+
+                @if($scorers->contains($submission->pick_two))
+                  <td><div><img class="img-responsive submission_img scorer" id="{{ $submission->pick_two->id }}" src="{{ $submission->pick_two->image_path }}"></img><h5>{{ $submission->pick_two->name }}</h5></div></td>
+                @else
+                  <td><div><img class="img-responsive submission_img" id="{{ $submission->pick_two->id }}" src="{{ $submission->pick_two->image_path }}"></img><h5>{{ $submission->pick_two->name }}</h5></div></td>
+                @endif
+
+                @if($scorers->contains($submission->pick_three))
+                  <td><div><img class="img-responsive submission_img scorer" id="{{ $submission->pick_three->id }}" src="{{ $submission->pick_three->image_path }}"></img><h5>{{ $submission->pick_three->name }}</h5></div></td>
+                @else
+                  <td><div><img class="img-responsive submission_img" id="{{ $submission->pick_three->id }}" src="{{ $submission->pick_three->image_path }}"></img><h5>{{ $submission->pick_three->name }}</h5></div></td>
+                @endif
+
+                @if($scorers->contains($submission->pick_wildcard))
+                  <td><div><img class="img-responsive submission_img scorer" id="{{ $submission->pick_wildcard->id }}" src="{{ $submission->pick_wildcard->image_path }}"></img><h5>{{ $submission->pick_wildcard->name }}</h5></div></td>
+                @else
+                  <td><div><img class="img-responsive submission_img" id="{{ $submission->pick_wildcard->id }}" src="{{ $submission->pick_wildcard->image_path }}"></img><h5>{{ $submission->pick_wildcard->name }}</h5></div></td>
+                @endif
                 <td>{{ $submission->points }}</td>
             </tr>
 

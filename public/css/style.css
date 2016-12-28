@@ -91,4 +91,5 @@ img.img-responsive.scorer {
 	float: right !important;
 	margin-right: 5%;
 	padding: 4px 20px;
+	cursor: pointer;
 }

@@ -19,9 +19,9 @@
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle nav_menu_button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <i class="fa fa-inverse fa-bars fa-2x" aria-hidden="true"></i>
+                        <i class="fa fa-inverse fa-bars fa-3x" aria-hidden="true"></i>
                     </button>
-                    <i class="fa fa-inverse fa-twitter-square fa-4x nav-item mobile_twitter_icon" data-toggle="modal" data-target="#twitter_modal"></i>
+                    <i class="fa fa-inverse fa-twitter-square fa-5x nav-item mobile_twitter_icon" data-toggle="modal" data-target="#twitter_modal"></i>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills head-menu">

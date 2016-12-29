@@ -144,10 +144,15 @@ img.img-responsive.scorer {
 		margin-right: 5%;
 		margin-top: 0.5%;
 		display: block !important;
+		cursor: pointer;
 	}
 
 	.twitter_icon {
 		display: none !important;
+	}
+
+	.nav-pills>li>a {
+		font-size: 25px !important;
 	}
 }
 

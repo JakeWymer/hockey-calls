@@ -154,6 +154,10 @@ img.img-responsive.scorer {
 	.nav-pills>li>a {
 		font-size: 25px !important;
 	}
+
+	.modal.right .modal-dialog {
+		width: 50%;
+	}
 }
 
 

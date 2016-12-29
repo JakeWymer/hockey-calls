@@ -65,3 +65,13 @@ $('#pick_one, #pick_two, #pick_three, #pick_wildcard').change(function() {
         }
     });
 });
+
+//Stack menu when collapsed
+$('#bs-example-navbar-collapse-1').on('show.bs.collapse', function() {
+    $('.nav-pills').addClass('nav-stacked');
+});
+
+//Unstack menu when not collapsed
+$('#bs-example-navbar-collapse-1').on('hide.bs.collapse', function() {
+    $('.nav-pills').removeClass('nav-stacked');
+});

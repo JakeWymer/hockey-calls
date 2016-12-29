@@ -16,16 +16,24 @@
     <body>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="container-fluid">
-            <nav>
-                <ul class="nav nav-pills">
-                    <li role="presentation"><a href="{{ url('/scores') }}">Home</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/competitors') }}">Competitors</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/players') }}">Players</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/picks') }}">Make Picks</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/leaderboard') }}">Leaderboard</a></li>
-                    <li role="presentation"><a class="nav-item" href="{{ url('/history') }}">History</a></li>
-                    <li role="presentation" class="twitter_icon"><i class="fa fa-inverse fa-twitter-square fa-3x nav-item" data-toggle="modal" data-target="#twitter_modal"></i></li>
-                </ul>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle nav_menu_button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <i class="fa fa-inverse fa-bars fa-2x" aria-hidden="true"></i>
+                    </button>
+                    <i class="fa fa-inverse fa-twitter-square fa-4x nav-item mobile_twitter_icon" data-toggle="modal" data-target="#twitter_modal"></i>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav nav-pills head-menu">
+                        <li role="presentation"><a href="{{ url('/scores') }}">Home</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/competitors') }}">Competitors</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/players') }}">Players</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/picks') }}">Make Picks</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/leaderboard') }}">Leaderboard</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/history') }}">History</a></li>
+                        <li role="presentation" class="twitter_icon"><i class="fa fa-inverse fa-twitter-square fa-3x nav-item" data-toggle="modal" data-target="#twitter_modal"></i></li>
+                    </ul>
+                </div>
             </nav>
         </div>
         <div class="container">

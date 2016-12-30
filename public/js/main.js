@@ -6,6 +6,10 @@ $( document ).ready(function() {
     })
 
     $('#pick_one_toggle, #pick_two_toggle, #pick_three_toggle, #pick_wildcard_toggle').change();
+    console.log(window.location.pathname);
+    if(window.location.pathname == 'hockey-calls.com/public/scores'){
+
+    }
 });
 
 $('#pick_one_toggle, #pick_two_toggle, #pick_three_toggle, #pick_wildcard_toggle').change(function() {

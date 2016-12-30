@@ -31,6 +31,7 @@
                         <li role="presentation"><a class="nav-item" href="{{ url('/picks') }}">Make Picks</a></li>
                         <li role="presentation"><a class="nav-item" href="{{ url('/leaderboard') }}">Leaderboard</a></li>
                         <li role="presentation"><a class="nav-item" href="{{ url('/history') }}">History</a></li>
+                        <li role="presentation"><a class="nav-item" href="{{ url('/messages') }}">Trash Talk</a></li>
                         <li role="presentation" class="twitter_icon"><i class="fa fa-inverse fa-twitter-square fa-3x nav-item" data-toggle="modal" data-target="#twitter_modal"></i></li>
                     </ul>
                 </div>

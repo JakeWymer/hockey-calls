@@ -35,4 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('game/{id}', 'GamesController@close');
 
 	Route::get('history', 'ScoresController@history');
+
+	Route::get('messages', 'MessagesController@index');
+	Route::post('messages', 'MessagesController@getGif');
 });

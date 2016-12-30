@@ -51,8 +51,9 @@
                         </div>
 
                         <div class="modal-body">
-                                        <a class="twitter-timeline"  href="https://twitter.com/search?q=from%3AStarsInsideEdge%20OR%20from%3ADallasStars%20OR%20from%3AMikeHeika" data-widget-id="814643307599056899">Tweets about the Stars</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            <a class="twitter-timeline"  href="https://twitter.com/search?q=from%3AStarsInsideEdge%20OR%20from%3ADallasStars%20OR%20from%3AMikeHeika" data-widget-id="814643307599056899">Tweets about from:StarsInsideEdge OR from:DallasStars OR from:MikeHeika</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
           
                         </div>
 

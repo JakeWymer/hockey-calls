@@ -103,6 +103,9 @@ img.img-responsive.scorer {
 	display: none !important;
 }
 
+#twitter-widget-0 {height:725px !important;}
+
+
 @media (min-width: 425px) and (max-width: 1024px) {
 	.navbar-header {
 	  float: none;

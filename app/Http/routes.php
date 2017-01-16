@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('picks', 'PageController@home');
 	Route::post('scores', 'ScoresController@trackGoal');
+	Route::post('scores/edit', 'ScoresController@editGoal');
 
 	Route::post('game/{id}', 'GamesController@close');
 

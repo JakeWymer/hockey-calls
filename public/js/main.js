@@ -79,3 +79,46 @@ $('#bs-example-navbar-collapse-1').on('show.bs.collapse', function() {
 $('#bs-example-navbar-collapse-1').on('hide.bs.collapse', function() {
     $('.nav-pills').removeClass('nav-stacked');
 });
+
+$('.scorer').click(function(){
+    data = this.id;
+    swal({
+      title: "Are you sure?",
+      text: "You better not be screwing up again...",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes",
+      closeOnConfirm: false
+    },
+    function(){
+      console.log('confirmed')
+      $.ajax({
+          type:"POST",
+          url:'scores/edit',
+          data: { 
+            data : data 
+          },
+          dataType: 'json',
+          success: function(data){
+              console.log(data.response);
+              swal({
+                type: 'success',
+                title: "Goal Removed!",
+                text: data.response,
+                timer: 2000,
+                showConfirmButton: false
+              },location.reload());
+          },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+          }
+      });
+    });
+});
+
+
+
+
+

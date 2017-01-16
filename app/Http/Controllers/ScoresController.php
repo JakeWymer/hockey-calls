@@ -167,4 +167,54 @@ class ScoresController extends Controller
     {
         dd('WORKS');
     }
+
+    public function editGoal(Request $request) {
+        $wrongScorerId = $request->data;
+
+        $today = Carbon::today('America/Chicago')->format('Y/m/d');
+
+        $game = DB::table('games')
+            ->where('date', $today)
+            ->where('status', 'active')
+            ->first();
+
+        $game = Game::find($game->id);
+
+        $scorerEntry = $game->players;
+
+        foreach ($scorerEntry as $scorer) {
+            if($scorer->id = $wrongScorerId) {
+                $game->players()->detach($scorer->id);
+                break;
+            }
+        }
+
+        $submissions = Submission::where('game_id', $game->id)->get();
+
+        foreach ($submissions as $submission) {
+            if($submission->pick_wildcard == $wrongScorerId) {
+                $competitor = Competitor::find($submission->competitor_id);
+                $competitor->total_points -= 2;
+                $competitor->save();
+                $submission->points -= 2;
+                $submission->save();
+            }else if($submission->pick_one == $wrongScorerId || $submission->pick_two == $wrongScorerId || $submission->pick_three == $wrongScorerId) {
+                $competitor = Competitor::find($submission->competitor_id);
+                $competitor->total_points -= 1;
+                $competitor->save();
+                $submission->points -= 1;
+                $submission->save();
+            }
+        }
+
+        return response()->json(['response' => "Stop screwing up..."], 200);
+
+    }
 }
+
+
+
+
+
+
+

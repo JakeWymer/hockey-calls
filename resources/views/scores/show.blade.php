@@ -2,6 +2,8 @@
 
 
 @section('content')
+<meta name="_token" content="{{ csrf_token() }}">
+
 <div class="row">
     <h1 class="text-center">Today's Picks</h1>
 </div>
@@ -86,6 +88,7 @@
             <tr>
                <th>Number</th>
                <th>Name</th>
+               <th>Delete</th>
             </tr>
          </thead>
          
@@ -96,6 +99,7 @@
             <tr class="pick">
                 <td>{{ $scorer->number }}</td>
                 <td>{{ $scorer->name }}</td>
+                <td><span id="{{$scorer->id}} " class="scorer glyphicon glyphicon-remove"></span></td>
             </tr>
 
          @endforeach
@@ -124,8 +128,41 @@
         {!! csrf_field() !!}
 
          <div class="form-group">
-            <label for="scoring_player">Track Goal</label>
+            <label for="scoring_player">Who scored?</label>
             <select class="form-control" id="scoring_player" name="scoring_player">
+                @foreach($players as $player)
+                    <option value="{{ $player->id }}">
+                        {{ $player->name }}
+                    </option>
+                @endforeach
+            </select>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Goal!</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="goal_edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <form id='edit_goal_form' action='scores/edit' method='POST'>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Goal</h4>
+      </div>
+      <div class="modal-body">
+
+        {!! csrf_field() !!}
+
+         <div class="form-group">
+            <label for="real_scorer">Ok, who actually scored?</label>
+            <select class="form-control" id="real_scorer" name="real_scorer">
                 @foreach($players as $player)
                     <option value="{{ $player->id }}">
                         {{ $player->name }}

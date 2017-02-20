@@ -16,6 +16,13 @@ class SubmissionsController extends Controller
 {
     function store(Request $request) {
 
+        $this->validate($request, [
+            'pick_one' => 'required',
+            'pick_two' => 'required',
+            'pick_three' => 'required',
+            'pick_wildcard' => 'required',
+        ]);
+
         $competitor = Competitor::find(Auth::user()->competitor_id);
         $competitor->submissions += 1;
         $competitor->save();
